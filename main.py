@@ -65,4 +65,6 @@ def upload_file():
         return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Sử dụng PORT từ biến môi trường nếu có, mặc định là 5000
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
