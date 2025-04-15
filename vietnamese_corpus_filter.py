@@ -71,6 +71,17 @@ def is_english_word(word):
     vietnamese_chars = 'àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ'
     vietnamese_chars += vietnamese_chars.upper()
     
+    # Common Vietnamese short words that might be mistaken as English
+    vietnamese_short_words = [
+        'xe', 'me', 'be', 'to', 'va', 'la', 'do', 'ba', 'an', 'bo', 'ca', 'he', 
+        'hoa', 'anh', 'xin', 'ma', 'may', 'can', 'ban', 'con', 'hi', 'ha', 'hon', 'tim',
+        'den', 'nha', 'em', 'di', 'tu', 'hot', 'hen', 'hat', 'ca', 'que'
+    ]
+    
+    # Check if word is a common Vietnamese word regardless of length
+    if word.lower() in vietnamese_short_words:
+        return False
+    
     # Check if the word contains only ASCII letters (a-z, A-Z)
     if word.isalpha() and all(c.lower() in string.ascii_lowercase for c in word):
         # Check if it doesn't contain any Vietnamese characters
@@ -78,10 +89,8 @@ def is_english_word(word):
             # Words of length 2-3 are often abbreviations in Vietnamese context
             # rather than English words, so we're more strict with them
             if len(word) <= 3:
-                # Common Vietnamese short words that might be mistaken as English
-                vietnamese_short_words = ['xe', 'me', 'be', 'to', 'va', 'la', 'do', 'ba', 'an', 'bo', 'ca', 'he']
-                if word.lower() in vietnamese_short_words:
-                    return False
+                # Return False for very short words
+                return False
                     
             return True
     

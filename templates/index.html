@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ lọc Corpus Tiếng Việt</title>
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary bg-opacity-25">
+                        <h1 class="text-center mb-0">Bộ lọc Corpus Tiếng Việt</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <h5>Công cụ này sẽ lọc bỏ các câu có:</h5>
+                            <ul class="mb-4">
+                                <li>Từ viết tắt (ví dụ: "NBA", "GTVT", "U.S.A")</li>
+                                <li>Từ tiếng Anh</li>
+                            </ul>
+                            
+                            <div class="alert alert-info">
+                                <p class="mb-0"><strong>Lưu ý:</strong> File đầu vào cần được mã hóa UTF-8 để hỗ trợ tiếng Việt đúng cách.</p>
+                            </div>
+                        </div>
+
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-warning" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        <form method="POST" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="file" class="form-label fw-bold">Chọn file corpus tiếng Việt (.txt):</label>
+                                <input class="form-control" type="file" id="file" name="file" accept=".txt" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Lọc Corpus</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Ví dụ:</h5>
+                                <div class="card bg-dark text-light mb-2">
+                                    <div class="card-header bg-dark text-white-50">
+                                        Input
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Xin chào, đây là một văn bản tiếng Việt.</p>
+                                        <p>FLC và NBA là các từ viết tắt.</p>
+                                        <p>Đây là một computer hiện đại.</p>
+                                    </div>
+                                </div>
+                                <div class="card bg-dark">
+                                    <div class="card-header bg-dark text-white-50">
+                                        Output
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Xin chào, đây là một văn bản tiếng Việt.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <h5>Hướng dẫn:</h5>
+                                <ol>
+                                    <li>Chọn file corpus bằng nút "Chọn file" ở trên</li>
+                                    <li>Nhấn nút "Lọc Corpus" để bắt đầu quá trình lọc</li>
+                                    <li>File kết quả sẽ được tải xuống tự động sau khi xử lý xong</li>
+                                </ol>
+                                <p><small>Kết quả sẽ có tên dạng: <code>tên_file_gốc_filtered.txt</code></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

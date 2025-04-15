@@ -1,0 +1,19 @@
+Xin chào, đây là một văn bản mẫu tiếng Việt để kiểm tra.
+
+FLC và NBA là các từ viết tắt đáng lẽ sẽ bị lọc bỏ.
+
+Đây là một câu hoàn toàn bằng tiếng Việt và không có từ viết tắt.
+
+GTVT là viết tắt của Giao thông Vận tải, nên câu này sẽ bị lọc bỏ.
+
+Câu này chứa email info@example.com sẽ bị lọc bỏ vì có từ tiếng Anh "example".
+
+Đây là một câu dài hơn và có chứa từ computer ở giữa câu nên sẽ bị lọc bỏ.
+
+Những từ như "xe", "và", "là" không phải từ tiếng Anh mà là từ tiếng Việt.
+
+Hoa hồng có màu đỏ rất đẹp và thơm ngát.
+
+Tôi rất thích ăn phở vào buổi sáng.
+
+Chào bạn, hẹn gặp lại!
